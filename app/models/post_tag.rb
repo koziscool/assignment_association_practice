@@ -1,4 +1,8 @@
 class PostTag < ActiveRecord::Base
-  belongs_to :tagged_post, foreign_key: :post_id, class_name: "Post"
+
+  belongs_to :post
   belongs_to :tag
+
+  has_many  :user_posts,
+            :through => :user_post_tag
 end
