@@ -17,6 +17,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @category_options = Category.all.map do |p|
+      [ p.name, p.id ]
+    end
     @post = Post.find( params[:id])
   end
 
