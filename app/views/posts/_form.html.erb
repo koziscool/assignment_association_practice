@@ -21,6 +21,16 @@
 
     <%= post_form.collection_select( :tag_ids, Tag.all, :id, :name, {}, multiple: true) %>
 
+
+    <%= post_form.fields_for :comments do |comment_form| %>
+      <h2>Comment Form</h2>
+      <div class="form-group">
+        <%= comment_form.label :body %>
+        <%= comment_form.text_field :body, class: "form-control" %>
+      </div>
+    <% end %>
+
+
       <%= post_form.fields_for :comments, Comment.new do |comment_form| %>
         <h2>Comment Form</h2>
         <div class="form-group">
@@ -28,6 +38,9 @@
           <%= comment_form.text_field :body, class: "form-control" %>
         </div>
       <% end %>
+
+
+
 
     <div class="form-group">
       <%= post_form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>

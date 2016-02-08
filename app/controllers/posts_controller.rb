@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     params.require( :post ).permit( :title,
                                     :body,
                                     :category_id,
-                                    {:comments_attributes => [:body, :user_id, :post_id]},
+                                    {:comments_attributes => [:id, :body, :user_id, :post_id]},
                                     :tag_ids => []  )
   end
 end

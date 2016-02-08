@@ -23,7 +23,8 @@ class Post < ActiveRecord::Base
   has_many  :tags,
             :through => :post_taggings
 
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :comments,
+                                :allow_destroy => true
 
 private
   def update_join_table
