@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   before_destroy :update_join_table
+
   has_many  :comments,
             :dependent => :destroy
 
@@ -12,8 +13,9 @@ class Post < ActiveRecord::Base
             :through => :post_authorings,
             source: :user
 
-  has_many  :post_tagginngs
-            class_name: 'PostTag',
+  has_many  :post_tagginngs,
+            class_name: 'PostTag'
+            
   has_many  :tags,
             :through => :post_taggings
 
