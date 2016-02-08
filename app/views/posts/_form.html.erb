@@ -1,27 +1,37 @@
-<%= form_for @post do |f| %>
+<%= form_for @post do |post_form| %>
 
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= post_form.label :title %>
+    <%= post_form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: "form-control"  %>
+    <%= post_form.label :body %>
+    <%= post_form.text_area :body, class: "form-control"  %>
   </div>
 
-  <div class="form-group">
-    <%= f.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
-  </div>
 
-  <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) %><br/>
 
-  <%= f.collection_radio_buttons( :category_id, Category.all, :id, :name) %><br/>
+  <%= post_form.collection_check_boxes( :tag_ids, Tag.all, :id, :name) %><br/>
 
-  <%= f.collection_select( :category_id, Category.all, :id, :name) %>
+  <%= post_form.collection_radio_buttons( :category_id, Category.all, :id, :name) %><br/>
+
+  <%= post_form.collection_select( :category_id, Category.all, :id, :name) %>
   <%= select_tag( :category_id, options_for_select( @category_options ) ) %><br />
 
-    <%= f.collection_select( :tag_ids, Tag.all, :id, :name, {}, multiple: true) %>
+    <%= post_form.collection_select( :tag_ids, Tag.all, :id, :name, {}, multiple: true) %>
+
+      <%= post_form.fields_for :comments, Comment.new do |comment_form| %>
+        <h2>Comment Form</h2>
+        <div class="form-group">
+          <%= comment_form.label :body %>
+          <%= comment_form.text_field :body, class: "form-control" %>
+        </div>
+      <% end %>
+
+    <div class="form-group">
+      <%= post_form.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
+    </div>
 
 <% end %>
 

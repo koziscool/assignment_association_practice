@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
 
   before_destroy :update_join_table
 
+
+
+
   has_many  :comments,
             :dependent => :destroy
 
@@ -19,6 +22,8 @@ class Post < ActiveRecord::Base
 
   has_many  :tags,
             :through => :post_taggings
+
+  accepts_nested_attributes_for :comments
 
 private
   def update_join_table
