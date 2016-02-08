@@ -18,12 +18,13 @@ Parameters: {
     <input type="hidden" name="id", value="1">
     <input type ="text" name = "post[title]" value = "My Super Title"><br>
     <input type ="text" name = "post[body]" value = "Some Body of a post"><br>
-    
-    <input  id="tag_ids" name="user[tag_ids[]]" type="checkbox" value="1"><br>
-    <input  id="tag_ids" name="user[tag_ids[]]" type="checkbox" value="2"><br>
-    <input  id="tag_ids" name="user[tag_ids[]]" type="checkbox" value="3"><br>
-    <input  id="tag_ids" name="user[tag_ids[]]" type="checkbox" value="4"><br>
-    <input  id="tag_ids" name="user[tag_ids[]]" type="checkbox" value="5"><br>
+
+    <input  id="tag_ids" name="post[tag_ids][]" type="hidden" value=""><br>
+    <input  id="tag_ids" name="post[tag_ids][]" type="checkbox" value="1"><br>
+    <input  id="tag_ids" name="post[tag_ids][]" type="checkbox" value="2"><br>
+    <input  id="tag_ids" name="post[tag_ids][]" type="checkbox" value="3"><br>
+    <input  id="tag_ids" name="post[tag_ids][]" type="checkbox" value="4"><br>
+    <input  id="tag_ids" name="post[tag_ids][]" type="checkbox" value="5"><br>
 
     <input type="submit" value="Update Post">
   </form>

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find( params[:id])
-    if @post.update
+    if @post.update(post_params)
       redirect_to post_path(@post)
     else
       render :edit
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find( params[:id])    
+    @post = Post.find( params[:id])
   end
 
   private
