@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
   def new
+    @category_options = Category.all.map do |p|
+      [ p.name, p.id ]
+    end
     @post = Post.new
   end
 
@@ -19,7 +22,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find( params[:id])
-    if @post.update(post_params)
+    if @post.update( post_params )
       redirect_to post_path(@post)
     else
       render :edit
@@ -32,6 +35,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require( :post ).permit( :title, :body, :tag_ids => [] )
+    params.require( :post ).permit( :title, :body, :category_id, :tag_ids => [] )
   end
 end
