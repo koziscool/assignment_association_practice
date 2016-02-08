@@ -2,9 +2,6 @@ class Post < ActiveRecord::Base
 
   before_destroy :update_join_table
 
-
-
-
   has_many  :comments,
             :dependent => :destroy
 
@@ -24,7 +21,8 @@ class Post < ActiveRecord::Base
             :through => :post_taggings
 
   accepts_nested_attributes_for :comments,
-                                :allow_destroy => true
+                                :allow_destroy => true,
+                                :reject_if => :all_blank
 
 private
   def update_join_table

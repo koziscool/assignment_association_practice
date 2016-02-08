@@ -27,6 +27,12 @@
       <div class="form-group">
         <%= comment_form.label :body %>
         <%= comment_form.text_field :body, class: "form-control" %>
+
+        <% if comment_form.object.persisted? %>
+          <%= comment_form.label :_destroy, "delete comment?" %>
+          <%= comment_form.check_box :_destroy %>
+        <% end %>
+
       </div>
     <% end %>
 
