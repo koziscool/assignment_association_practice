@@ -14,7 +14,12 @@
     <%= f.submit "Save", class: "btn btn-primary btn-lg btn-block" %>
   </div>
   
-  <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) %>
+  <%= f.collection_check_boxes( :tag_ids, Tag.all, :id, :name) %><br/>
+
+  <%= f.collection_radio_buttons( :category_id, Category.all, :id, :name) %><br/>
+
+  <%= f.collection_select( :category_id, Category.all, :id, :name) %>
+  <%= select_tag( :category_id, options_for_select( @category_options ) ) %>
 
 <% end %>
 
