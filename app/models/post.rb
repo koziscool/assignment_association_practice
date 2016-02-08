@@ -14,9 +14,9 @@ class Post < ActiveRecord::Base
             :through => :post_authorings,
             source: :user
 
-  has_many  :post_tagginngs,
+  has_many  :post_taggings,
             class_name: 'PostTag'
-            
+
   has_many  :tags,
             :through => :post_taggings
 
