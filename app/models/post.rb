@@ -25,4 +25,5 @@ private
     self.post_authorings.destroy
   end
 
+
 end
